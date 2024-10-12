@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <!-- Products Section -->
+
+    <section class="products" id="products">
+
+        <h1 class="heading"> our <span>products</span></h1>
+
+        <div class="swiper product-slider">
+
+            <div class="swiper-wrapper">
+
+                {% for product in products %}
+                    <div class="box">
+                        <img src="{{ product.image_path }}" alt="">
+                        <h3>{{ product.name }}</h3>
+                        <div class="price mb-4">${{ product.price }}</div>
+                        <a href="#" class="custom-btn">add to cart</a>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
