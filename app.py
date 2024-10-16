@@ -2,6 +2,13 @@ from flask import Flask
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from jinja2 import Environment, PackageLoader, select_autoescape
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+MONGODB_USERNAME = os.getenv('MONGODB_USERNAME')
+MONGODB_PASSWORD = os.getenv('MONGODB_PASSWORD')
 
 app = Flask(__name__)
 
@@ -11,8 +18,10 @@ env = Environment(
     autoescape=select_autoescape()
 )
 
+print("From env", MONGODB_USERNAME)
+
 # MongoDB Connection URL
-uri = "mongodb+srv://empire:Qj9deFo5j01iU2g1@ecommercecluster.sonrn.mongodb.net/?retryWrites=true&w=majority&appName=ECommerceCluster"
+uri = f"mongodb+srv://{MONGODB_USERNAME}:{MONGODB_PASSWORD}@ecommercecluster.sonrn.mongodb.net/?retryWrites=true&w=majority&appName=ECommerceCluster"
 
 # Database connection
 client = MongoClient(uri, server_api=ServerApi('1'))
