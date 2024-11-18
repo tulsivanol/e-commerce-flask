@@ -18,8 +18,6 @@ env = Environment(
     autoescape=select_autoescape()
 )
 
-print("From env", MONGODB_USERNAME)
-
 # MongoDB Connection URL
 uri = f"mongodb+srv://{MONGODB_USERNAME}:{MONGODB_PASSWORD}@ecommercecluster.sonrn.mongodb.net/?retryWrites=true&w=majority&appName=ECommerceCluster"
 
